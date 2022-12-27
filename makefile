@@ -2,11 +2,15 @@ CXX = g++
 CXXFLAGS = -g -Wall -std=c++17
 
 INC=-I/usr/include -I../common -I./
-LIB=-L/usr/local/lib -lsfml-graphics -lsfml-system -lsfml-window -lbox2d
+LIB=-L/usr/local/lib -lsfml-graphics -lsfml-network -lsfml-system -lsfml-window -lbox2d
 
 all: pre-build main-build
 
-main-build: bin/main
+main-build: client server
+
+client: bin/client
+
+server: bin/server
 
 clean:
 	rm -f cpp/obj/*
@@ -21,5 +25,8 @@ pre-build:
 cpp/obj/%.o: cpp/src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $^ -o $@ $(INC)
 
-bin/main: cpp/obj/main.o cpp/obj/window.o
+bin/client: cpp/obj/client.o cpp/obj/window.o
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIB)
+
+bin/server: cpp/obj/server.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIB)
