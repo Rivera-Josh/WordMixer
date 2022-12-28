@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include "window.h"
+
 sf::RenderWindow* setupGraphics(bool fullscreen)
 {
     // if (!font.loadFromFile("Andale_Mono.ttf"))
