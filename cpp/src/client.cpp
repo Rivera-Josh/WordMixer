@@ -49,6 +49,7 @@ int main(){
                     break;
             }
         }
+        display(window);
     }
 }
 
