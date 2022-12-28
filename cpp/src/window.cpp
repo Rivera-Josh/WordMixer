@@ -17,7 +17,7 @@ sf::RenderWindow* setupGraphics(bool fullscreen)
 
 void display(sf::RenderWindow* window)
 {
-    sf::Color backgroundColor(0, 0, 50);
+    sf::Color backgroundColor(0, 0, 0);
     window->clear(backgroundColor);
 
     // sf::CircleShape circle(10);
