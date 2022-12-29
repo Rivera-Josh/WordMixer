@@ -2,14 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include <iostream>
-
 #include "window.h"
+#include "word_magnet.h"
 using namespace std;
 
 
 
-
 int main(){
+    sf::Color BACKGROUND_COLOR(0,150,0);
     sf::RenderWindow* window = setupGraphics(false);
 
     sf::TcpSocket socket;
@@ -20,6 +20,8 @@ int main(){
     else{
         cout << "Connected!" << endl;
     }
+
+    sf::Font font;
     
     // word player must guess
     string word;
@@ -31,6 +33,11 @@ int main(){
     //packet now holds the word which is stored in word
     packet >> word;
     cout << word << endl;
+    string dog = "test word";
+    if(!font.loadFromFile("/System/Library/Fonts/Supplemental/Arial.ttf")){
+        throw runtime_error("Font not loaded");
+    };
+    WordMagnet test(dog, &font);
 
     sf::Event e;
 
@@ -49,6 +56,8 @@ int main(){
                     break;
             }
         }
+        setBackground(window, BACKGROUND_COLOR);
+        test.draw(window, sf::Vector2f{0,0});
         display(window);
     }
 }

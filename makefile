@@ -25,7 +25,7 @@ pre-build:
 cpp/obj/%.o: cpp/src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $^ -o $@ $(INC)
 
-bin/client: cpp/obj/client.o cpp/obj/window.o
+bin/client: cpp/obj/client.o cpp/obj/window.o cpp/obj/word_magnet.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIB)
 
 bin/server: cpp/obj/server.o

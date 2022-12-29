@@ -11,7 +11,7 @@ class WordMagnet
 public:
     sf::Text renderedText;
     WordMagnet(string word, sf::Font* font);
-    void display(sf::RenderWindow* window, sf::Vector2f drawPos);
+    void draw(sf::RenderWindow* window, sf::Vector2f drawPos);
 };
 
 #endif // WORD_MAGNET_H

@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include "window.h"
+#include "word_magnet.h"
+
 
 sf::RenderWindow* setupGraphics(bool fullscreen)
 {
@@ -15,11 +17,13 @@ sf::RenderWindow* setupGraphics(bool fullscreen)
 
     return window;
 }
-
+void setBackground(sf::RenderWindow* window, sf::Color backgroundColor){
+    window->clear(backgroundColor);
+}
+//void draw(sf::RenderWindow* window, )
 void display(sf::RenderWindow* window)
 {
     sf::Color backgroundColor(0, 150, 0);
-    window->clear(backgroundColor);
 
     // sf::CircleShape circle(10);
     // circle.setPosition(sf::Vector2f(x, 20));
