@@ -25,10 +25,7 @@ void display(sf::RenderWindow* window)
 {
     sf::Color backgroundColor(0, 150, 0);
 
-    // sf::CircleShape circle(10);
-    // circle.setPosition(sf::Vector2f(x, 20));
-    // circle.setFillColor(sf::Color::Red);
-    // window->draw(circle);
+    
 
     window->display();
 }

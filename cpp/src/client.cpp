@@ -57,7 +57,7 @@ int main(){
             }
         }
         setBackground(window, BACKGROUND_COLOR);
-        test.draw(window, sf::Vector2f{0,0});
+        test.draw(window, sf::Vector2f{50,50});
         display(window);
     }
 }
