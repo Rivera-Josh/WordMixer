@@ -16,7 +16,7 @@ WordMagnet::WordMagnet(string word, sf::Font* font){
 
 
 void WordMagnet::draw(sf::RenderWindow* window, sf::Vector2f drawPos){
-
+    
     magnetBox.setPosition(sf::Vector2f(drawPos.x-10, drawPos.y-15));
     renderedText.setPosition(drawPos);
     window->draw(magnetBox);

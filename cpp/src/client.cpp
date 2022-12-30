@@ -2,8 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 #include <iostream>
+#include <vector>
 #include "window.h"
 #include "word_magnet.h"
+#include "getWord.h"
 using namespace std;
 
 
@@ -11,6 +13,8 @@ using namespace std;
 int main(){
     sf::Color BACKGROUND_COLOR(0,150,0);
     sf::RenderWindow* window = setupGraphics(false);
+
+    vector<string> wordList(getWordList());
 
     sf::TcpSocket socket;
     sf::Socket::Status status = socket.connect(sf::IpAddress(127,0,0,1), 53000);
@@ -33,14 +37,20 @@ int main(){
     //packet now holds the word which is stored in word
     packet >> word;
     cout << word << endl;
-    string dog = "test word";
     if(!font.loadFromFile("/System/Library/Fonts/Supplemental/Arial.ttf")){
         throw runtime_error("Font not loaded");
     };
-    WordMagnet test(dog, &font);
+    //list to store chosen words
+    vector<WordMagnet> wordMagnetList;
+    //set magnet words into a class
+    for (int i=0; i<40; i++){
+        
+        wordMagnetList.push_back(WordMagnet(wordList[i], &font));
+
+    }
 
     sf::Event e;
-
+    
     while (window->isOpen()) { // This is the program's main loop
 
         while (window->pollEvent(e)) { // Event handling
@@ -57,7 +67,20 @@ int main(){
             }
         }
         setBackground(window, BACKGROUND_COLOR);
-        test.draw(window, sf::Vector2f{50,50});
+
+        sf::Vector2u windowSize(window->getSize());
+
+
+        sf::Vector2f drawPosition(20,20);
+        for (int i =0; i < 40; i++){
+            
+            wordMagnetList[i].draw(window, drawPosition);
+            drawPosition.x += wordMagnetList[i].magnetBox.getSize().x+20;
+            if (drawPosition.x > (windowSize.x-wordMagnetList[i].magnetBox.getSize().x)){
+                drawPosition.x=20;
+                drawPosition.y+= wordMagnetList[i].magnetBox.getSize().y+20;
+            }
+        }
         display(window);
     }
 }
