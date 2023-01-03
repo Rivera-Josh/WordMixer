@@ -3,6 +3,7 @@
 #include <vector>
 #include <time.h>
 #include <iostream>
+#include "definitions.h"
 using namespace std;
 vector<string> getWordList(){
     srand(time(NULL));
@@ -17,7 +18,7 @@ vector<string> getWordList(){
     while (getline(wordDict, word)){
         fileWords.push_back(word);
     }
-    for (int i = 0; i < 40; i++){
+    for (int i = 0; i < LIST_SIZE; i++){
         wordList.push_back(fileWords[rand()%fileWords.size()]);
         //cout << wordList[i] << endl;
     }

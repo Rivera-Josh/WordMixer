@@ -6,6 +6,7 @@
 #include "window.h"
 #include "word_magnet.h"
 #include "getWord.h"
+#include "definitions.h"
 using namespace std;
 
 
@@ -43,7 +44,7 @@ int main(){
     //list to store chosen words
     vector<WordMagnet> wordMagnetList;
     //set magnet words into a class
-    for (int i=0; i<40; i++){
+    for (int i=0; i<LIST_SIZE; i++){
         
         wordMagnetList.push_back(WordMagnet(wordList[i], &font));
 
@@ -73,7 +74,7 @@ int main(){
 
         sf::Vector2f drawPosition(20,20);
         //displays words in row fashion
-        for (int i =0; i < 40; i++){
+        for (int i =0; i < LIST_SIZE; i++){
             
             wordMagnetList[i].draw(window, drawPosition);
             drawPosition.x += wordMagnetList[i].magnetBox.getSize().x+20;
