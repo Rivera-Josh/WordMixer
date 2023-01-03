@@ -7,7 +7,7 @@ using namespace std;
 vector<string> getWordList(){
     srand(time(NULL));
     ifstream wordDict;
-    wordDict.open ("/usr/share/dict/words");
+    wordDict.open ("../cpp/dictionary/dictionary.txt");
 
     vector<string> wordList;
     vector<string> fileWords;

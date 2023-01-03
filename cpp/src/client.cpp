@@ -72,6 +72,7 @@ int main(){
 
 
         sf::Vector2f drawPosition(20,20);
+        //displays words in row fashion
         for (int i =0; i < 40; i++){
             
             wordMagnetList[i].draw(window, drawPosition);
